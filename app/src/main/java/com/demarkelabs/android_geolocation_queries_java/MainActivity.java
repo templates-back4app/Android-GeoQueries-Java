@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         queryNear.setOnClickListener(view -> {
             progressDialog.show();
             ParseQuery<ParseObject> query = new ParseQuery<>("City");
-            query.whereNear("location",new ParseGeoPoint(18.018086950599134, -76.79894232253473));
+            query.whereNear("location",new ParseGeoPoint(41.015137, 28.97953));
             query.findInBackground((objects, e) -> {
                 progressDialog.dismiss();
                 if (e==null){
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         queryWithinKm.setOnClickListener(view -> {
             progressDialog.show();
             ParseQuery<ParseObject> query = new ParseQuery<>("City");
-            query.whereWithinKilometers("location",new ParseGeoPoint(18.018086950599134, -76.79894232253473),3000);
+            query.whereWithinKilometers("location",new ParseGeoPoint(41.015137, 28.97953),3000);
             query.findInBackground((objects, e) -> {
                 progressDialog.dismiss();
                 if (e==null){
@@ -74,12 +74,14 @@ public class MainActivity extends AppCompatActivity {
             ParseGeoPoint geoPoint3 = new ParseGeoPoint(-59.997149373299166, -76.52969196322749);
             ParseGeoPoint geoPoint4 = new ParseGeoPoint(-9.488786415007201, -18.346101586021952);
             ParseGeoPoint geoPoint5 = new ParseGeoPoint(15.414859532811047, -60.00625459569375);
+            ParseGeoPoint geoPoint6 = new ParseGeoPoint(41.015137, 28.97953);
             List<ParseGeoPoint> list = new ArrayList<>();
             list.add(geoPoint1);
             list.add(geoPoint2);
             list.add(geoPoint3);
             list.add(geoPoint4);
             list.add(geoPoint5);
+            list.add(geoPoint6);
             query.whereWithinPolygon("location",list);
 
             query.findInBackground((objects, e) -> {
